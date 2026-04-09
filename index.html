@@ -43,6 +43,7 @@ body { font-family: 'DM Sans', sans-serif; background: var(--surface); color: va
 .tab.t-lwr.active { background: var(--ocean); border-color: var(--ocean); }
 .tab.t-amli.active { background: var(--deep); border-color: var(--deep); }
 .tab.t-apgo.active { background: var(--silver); border-color: var(--silver); }
+.tab.t-sm.active { background: var(--gold); border-color: var(--gold); }
 .tab.t-silver.active { background: var(--silver); border-color: var(--silver); }
 .tab.t-uranium.active { background: var(--uranium); border-color: var(--uranium); }
 .tab.t-cesium.active { background: var(--cesium); border-color: var(--cesium); }
@@ -150,6 +151,7 @@ tr:hover td { background: var(--pale); }
 .b-lwr { background: rgba(13,111,168,0.12); color: var(--ocean); }
 .b-amli { background: rgba(10,79,122,0.12); color: var(--deep); }
 .b-apgo { background: rgba(122,143,168,0.12); color: var(--silver); }
+.b-sm { background: rgba(201,162,39,0.12); color: var(--gold); } 
 .b-litmac { background: rgba(41,170,225,0.1); color: var(--sky); }
 .b-silvmac { background: rgba(122,143,168,0.1); color: var(--silver); }
 .b-fun { background: rgba(139,92,246,0.1); color: var(--cesium); }
@@ -190,6 +192,7 @@ tr:hover td { background: var(--pale); }
       <button class="tab t-lwr" onclick="filterClient('LWR',this)">LWR</button>
       <button class="tab t-amli" onclick="filterClient('AMLI',this)">AMLI</button>
       <button class="tab t-apgo" onclick="filterClient('APGO',this)">APGO</button>
+      <button class="tab t-sm" onclick="filterClient('SM',this)">SM</button>
       <button class="tab" onclick="filterClient('General',this)">General</button>
     </div>
   </div>
@@ -353,6 +356,13 @@ const posts = [
   {date:"Mar 31",month:"March 2026",title:"Silver Macro Update",sub:"r/Commodities",client:"General",commodity:"Silver",type:"Silver - Macro",w1:4500,upvotes:1,comments:1},
   {date:"Mar 31",month:"March 2026",title:"Silver Macro Update",sub:"r/PennyStocksCanada",client:"General",commodity:"Silver",type:"Silver - Macro",w1:1500,upvotes:1,comments:1},
   {date:"Mar 31",month:"March 2026",title:"Silver Macro Update",sub:"r/CanadianStockPicks",client:"General",commodity:"Silver",type:"Silver - Macro",w1:4200,upvotes:4,comments:1},
+  {date:"Apr 2",month:"April 2026",title:"Silver Macro Update",sub:"r/MetalsOnReddit",client:"General",commodity:"Silver",type:"Silver - Macro",w1:1600,upvotes:4,comments:1},
+  {date:"Apr 2",month:"April 2026",title:"Lithium Macro Update",sub:"r/CanadianInvestor",client:"General",commodity:"Lithium",type:"Lithium - Macro",w1:18000,upvotes:14,comments:4},
+  {date:"Apr 2",month:"April 2026",title:"APGO Fundamentals",sub:"r/CriticalMineralStocks",client:"APGO",commodity:"Silver",type:"Fundamentals",w1:7200,upvotes:14,comments:5},
+  {date:"Apr 2",month:"April 2026",title:"LWR Fundamentals",sub:"r/CanadaInvesting",client:"LWR",commodity:"Lithium",type:"Fundamentals",w1:7500,upvotes:7,comments:4},
+  {date:"Apr 2",month:"April 2026",title:"SM Fundamentals",sub:"r/SilverSqueeze",client:"SM",commodity:"Silver",type:"Fundamentals",w1:14,500,upvotes:16,comments:11},
+  {date:"Apr 2",month:"April 2026",title:"Silver Macro Update",sub:"r/ValueInvesting",client:"General",commodity:"Silver",type:"Silver - Macro",w1:7100,upvotes:5,comments:2},
+  {date:"Apr 2",month:"April 2026",title:"Lithium Macro Update",sub:"r/StocksToBuyToday",client:"General",commodity:"Lithium",type:"Lithium - Macro",w1:1600,upvotes:3,comments:1},
 ];
 
 // Sort most recent first
@@ -375,7 +385,7 @@ function buildMonthFilters(){
   document.getElementById('month-filters').innerHTML=months.map(m=>`<button class="tab ${m==='all'?'active':''}" onclick="filterMonth('${m}',this)">${m==='all'?'All Time':m}</button>`).join('');
 }
 
-function clientBadge(c){ const map={General:'b-gen',LWR:'b-lwr',AMLI:'b-amli',APGO:'b-apgo'}; return `<span class="badge ${map[c]||'b-gen'}">${c}</span>`; }
+function clientBadge(c){ const map={General:'b-gen',LWR:'b-lwr',AMLI:'b-amli',APGO:'b-apgo',SM:'b-sm'}; return `<span class="badge ${map[c]||'b-gen'}">${c}</span>`; }
 function typeBadge(t){ const map={'Lithium - Macro':'b-litmac','Silver - Macro':'b-silvmac',Fundamentals:'b-fun',Discussion:'b-disc',Watchlist:'b-watch'}; return `<span class="badge ${map[t]||'b-litmac'}">${t}</span>`; }
 function commodityBadge(c){ const map={Lithium:'b-lit',Silver:'b-silv',Uranium:'b-uran',Cesium:'b-ces',Gold:'b-gold'}; return `<span class="badge ${map[c]||'b-gen'}">${c||'General'}</span>`; }
 
