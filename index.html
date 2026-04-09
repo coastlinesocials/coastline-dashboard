@@ -357,13 +357,13 @@ const posts = [
 
 // Sort most recent first
 posts.sort((a,b) => {
-  const order = ["March 2026","February 2026","January 2026","December 2025","November 2025"];
+  const order = ["April 2026","March 2026","February 2026","January 2026","December 2025","November 2025"];
   const mi = order.indexOf(a.month) - order.indexOf(b.month);
   if (mi !== 0) return mi;
   return parseInt(b.date.replace(/\D/g,'')) - parseInt(a.date.replace(/\D/g,''));
 });
 
-const MONTHS_ORDER = ["November 2025","December 2025","January 2026","February 2026","March 2026"];
+const MONTHS_ORDER = ["November 2025","December 2025","January 2026","February 2026","March 2026","April 2026"];
 let activeClient='all', activeCommodity='all', activeMonth='all', tableExpanded=false;
 
 function getViews(p){ return p.w1||0; }
