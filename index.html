@@ -406,7 +406,11 @@ let activeClient='all', activeCommodity='all', activeMonth='all', tableExpanded=
 
 function getViews(p){ return p.w1||0; }
 function filtered(){ return posts.filter(p=>{ return (activeClient==='all'||p.client===activeClient) && (activeCommodity==='all'||p.commodity===activeCommodity) && (activeMonth==='all'||p.month===activeMonth); }); }
-function fmt(n){ if(!n&&n!==0)return''; if(n>=1000)return(n/1000).toFixed(1)+'k'; return n.toString(); }
+function fmt(n){
+  if(n>=1000000) return (n/1000000).toFixed(2)+'M';
+  if(n>=1000) return (n/1000).toFixed(1)+'k';
+  return n;
+}
 
 function buildMonthFilters(){
   const months=['all',...MONTHS_ORDER];
