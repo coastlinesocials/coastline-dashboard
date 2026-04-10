@@ -154,13 +154,13 @@ tr:hover td { background: var(--pale); }
 .b-sm { background: rgba(201,162,39,0.12); color: var(--gold); } 
 .b-litmac { background: rgba(41,170,225,0.1); color: var(--sky); }
 .b-silvmac { background: rgba(122,143,168,0.1); color: var(--silver); }
-.b-fun { background: rgba(139,92,246,0.1); color: var(--cesium); }
+.b-fun { background: rgba(139,92,246,0.1); color: var(--tungsten); }
 .b-disc { background: rgba(13,111,168,0.08); color: var(--ocean); }
 .b-watch { background: rgba(201,162,39,0.1); color: var(--uranium); }
 .b-lit { background: rgba(41,170,225,0.12); color: var(--ocean); }
 .b-silv { background: rgba(122,143,168,0.12); color: var(--silver); }
 .b-uran { background: rgba(201,162,39,0.12); color: var(--uranium); }
-.b-ces { background: rgba(139,92,246,0.12); color: var(--cesium); }
+.b-ces { background: rgba(139,92,246,0.12); color: var(--tungsten); }
 .b-gold { background: rgba(217,119,6,0.12); color: var(--gold); }
 
 .empty { text-align: center; padding: 3rem; color: var(--text3); font-size: 13px; }
@@ -473,8 +473,8 @@ function renderBarChart(id,groupFn,colorFn){
 }
 
 function renderCommodityGrid(data){
-  const commodities=['Lithium','Silver','Uranium','Cesium','Gold'];
-  const colors={Lithium:'var(--sky)',Silver:'var(--silver)',Uranium:'var(--uranium)',Cesium:'var(--cesium)',Gold:'var(--gold)'};
+  const commodities=['Lithium','Silver','Uranium','Tungsten','Gold'];
+  const colors={Lithium:'var(--sky)',Silver:'var(--silver)',Uranium:'var(--uranium)',Tungsten:'var(--tungsten)',Gold:'var(--gold)'};
   document.getElementById('commodity-grid').innerHTML=commodities.map(c=>{
     const cPosts=data.filter(p=>p.commodity===c);
     const views=cPosts.reduce((s,p)=>s+getViews(p),0);
