@@ -565,7 +565,7 @@ function render(){
   renderPerformers(data);
   renderMonthlyGrid(data);
   renderBarChart('bar-subreddit',p=>p.sub,()=>'');
-  renderBarChart('bar-type',p=>p.type,t=>t.includes('Silver')?'silver':'');
+  renderBarChart('bar-type', p=>p.type, ()=>'');
   renderCommodityGrid(data);
   renderTable(data);
 }
